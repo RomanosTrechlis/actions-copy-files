@@ -27,7 +27,7 @@ inputs:
     required: true
   commit-message:
     description: '[Optional] commit message for the output repository.'
-    default: 'Update from ORIGIN_COMMIT'
+    default: '🚀 Files copied from: '
     required: false
 runs:
   using: 'docker'
