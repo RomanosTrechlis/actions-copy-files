@@ -1,5 +1,5 @@
-name: 'Copy files to another repository'
-description: 'Copy and push files from current repository to another repository.'
+name: 'actions-copy-files'
+description: 'Copy files from current repository to another repository.'
 inputs:
   source-files:
     description: 'The files/directories to copy to the destination repository. Can have multiple space-separated filenames and globbing.'
