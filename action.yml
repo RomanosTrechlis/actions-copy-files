@@ -1,0 +1,46 @@
+name: 'Copy files to another repository'
+description: 'Copy and push files from current repository to another repository.'
+inputs:
+  source-files:
+    description: 'The files/directories to copy to the destination repository. Can have multiple space-separated filenames and globbing.'
+    required: true
+  destination-username:
+    description: 'Name of the destination username/organization'
+    required: true
+  destination-repository:
+    description: 'Name of the destination repository'
+    required: true
+  destination-branch:
+    description: '[Optional] set target branch name for the destination repository.'
+    default: 'master'
+    required: false
+  destination-directory:
+    description: '[Optional] Directory to copy files into in the destination repository'
+    required: false
+    default: '.'
+  commit-username:
+    description: '[Optional] Username for the commit. Defaults to the destination username'
+    required: false
+    default: ''
+  commit-email:
+    description: 'Email for the commit'
+    required: true
+  commit-message:
+    description: '[Optional] commit message for the output repository.'
+    default: 'Update from ORIGIN_COMMIT'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source-files }}
+    - ${{ inputs.destination-username }}
+    - ${{ inputs.destination-repository }}
+    - ${{ inputs.destination-branch }}
+    - ${{ inputs.destination-directory }}
+    - ${{ inputs.commit-username }}
+    - ${{ inputs.commit-email }}
+    - ${{ inputs.commit-message }}
+branding:
+  icon: 'git-commit'
+  color: 'blue'
